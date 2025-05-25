@@ -47,7 +47,7 @@ void setup() {
   digitalWrite(INT_PIN, HIGH);
 
 #ifdef DEBUG
-  Serial.begin(115200);
+  Serial.begin();
   Serial.println("[I2C SLAVE] Encoder slave starting...");
 #endif
 

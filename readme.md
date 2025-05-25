@@ -10,7 +10,7 @@ This project handles 5 rotary encoders and communicates via I2C with a master de
 
 Each slave board is assigned an I2C address and global encoder index range based on a configuration constant.
 
-| Start Encoder | I2C Address | Encoder Range |
+| Encoder Group | I2C Address | Encoder Range |
 |---------------|-------------|----------------|
 | 1             | `0x11`      | 1–5            |
 | 6             | `0x12`      | 6–10           |
