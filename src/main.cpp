@@ -6,7 +6,7 @@
   #define ENCODER_GROUP 1
 #endif
 
-#define I2C_ADDRESS (0x10 + ((ENCODER_GROUP + 4) / 5))
+#define I2C_ADDRESS (0x10 + ENCODER_GROUP)
 #define NUM_ENCODERS 5
 #define SCALE_LEN 8
 #define INT_PIN 8
@@ -19,7 +19,7 @@
 void sendEncoderData();
 void handleEncoders();
 
-const uint8_t startEncoder = ENCODER_GROUP;
+const uint8_t startEncoder = ((ENCODER_GROUP - 1) * NUM_ENCODERS) + 1;
 
 const int enc_pins[NUM_ENCODERS][2] = {
   {A0, A1},
@@ -46,10 +46,20 @@ void setup() {
   pinMode(INT_PIN, OUTPUT);
   digitalWrite(INT_PIN, HIGH);
 
-#ifdef DEBUG
-  Serial.begin();
+  Serial.begin(57600);
   Serial.println("[I2C SLAVE] Encoder slave starting...");
-#endif
+  Serial.print(" Encoders: ");
+  Serial.print(startEncoder);
+  Serial.print("-");
+  Serial.println(startEncoder + NUM_ENCODERS - 1);
+  Serial.print(" I2C Address: 0x");
+  Serial.println(I2C_ADDRESS, HEX);
+
+  #ifdef DEBUG
+    Serial.print("Debug mode enabled");
+  #else
+    Serial.print("Debug mode disabled");
+  #endif
 
   for (int i = 0; i < NUM_ENCODERS; i++) {
     encoders[i] = new Encoder(enc_pins[i][0], enc_pins[i][1]);

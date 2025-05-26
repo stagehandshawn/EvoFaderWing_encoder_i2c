@@ -4,7 +4,6 @@ This project handles 5 rotary encoders and communicates via I2C with a master de
 
 - 5 rotary encoders with velocity scaling
 - I2C communication using a unified protocol
-- INT pin signaling when data is available
 
 ## I2C Address and Encoder Indexing
 
@@ -13,9 +12,9 @@ Each slave board is assigned an I2C address and global encoder index range based
 | Encoder Group | I2C Address | Encoder Range |
 |---------------|-------------|----------------|
 | 1             | `0x11`      | 1–5            |
-| 6             | `0x12`      | 6–10           |
-| 11            | `0x13`      | 11–15          |
-| 16            | `0x14`      | 16–20          |
+| 2             | `0x12`      | 6–10           |
+| 3             | `0x13`      | 11–15          |
+| 4             | `0x14`      | 16–20          |
 
 ## Changing Encoder Group via Build Flag
 
@@ -23,12 +22,8 @@ You can configure which slave board to build using a build flag called `ENCODER_
 
 ```
 ; For encoders 6–10
-build_flags = -DENCODER_GROUP=6
+build_flags = -DENCODER_GROUP=2
 ```
-
-This will automatically:
-- Set `startEncoder` to `ENCODER_GROUP`
-- Set '`I2C_ADDRESS` to `(0x10 + ((ENCODER_GROUP + 4) / 5))`'
 
 
 ## Example platformio.ini configuration
@@ -41,9 +36,9 @@ framework = arduino
 lib_deps =
   Encoder
   Wire
-upload_speed = 115200
-monitor_speed = 115200
-build_flags = -DENCODER_GROUP=6
+upload_speed = 57600
+monitor_speed = 57600
+build_flags = -DENCODER_GROUP=2
 ```
 
 ## Default Group
