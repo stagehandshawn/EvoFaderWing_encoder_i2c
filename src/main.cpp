@@ -21,9 +21,10 @@ void handleEncoders();
 
 const uint8_t startEncoder = ((ENCODER_GROUP - 1) * NUM_ENCODERS) + 1;
 
+// Pins setup to be wired from top to bottom on the physical Atmega device
 const int enc_pins[NUM_ENCODERS][2] = {
-  {A0, A1},
-  {A2, A3},
+  {A3, A2},
+  {A1, A0},
   {2, 3},
   {4, 5},
   {6, 7}
