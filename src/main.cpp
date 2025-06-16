@@ -1,3 +1,8 @@
+// Encoder i2c slave for faderwing project
+// Runs on atmega328p_3.3v_8mhz
+
+// USE 3.3v logic wth the teensy only!!
+
 #include <Wire.h>
 #include <Encoder.h>
 
