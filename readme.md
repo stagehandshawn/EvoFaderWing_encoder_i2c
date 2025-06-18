@@ -11,4 +11,4 @@ For example you want to compile for encoders 1-5
 
 ## Wiring diagram
 
-![Encoder diagram](https://github.com/stagehandshawn/EvoFaderWing_encoder_i2c/blob/main/images/evofaderwing_encoder_slave_wiring)
+![Encoder diagram](https://github.com/stagehandshawn/EvoFaderWing_encoder_i2c/blob/main/images/evofaderwing_encoder_slave_wiring.png)
